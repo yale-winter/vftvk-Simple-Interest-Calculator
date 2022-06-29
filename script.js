@@ -2,19 +2,16 @@
 function compute()
 {
     p = document.getElementById("principal").value;
-    if (document.getElementById("principal").value > 0) {
+    if (p > 0) {
         var rate = document.getElementById("rate").value;
         var years = document.getElementById("years").value;
         var year = new Date().getFullYear() + parseInt(years);
+        var interest = p * years * rate / 100;
 
-        var start = document.getElementById("principal").value;
-        var total = start;
-        for (let i = 0; i < years; i++) {
-            total *= (1 + rate / 100);
-        }
-        total = parseInt(total);
-        var compute_text = "If you deposit <mark>" + String(start) + "</mark><br/>" + "at an interest rate of <mark>" + rate + "%</mark><br/>";
-        compute_text += "You will receive an amount of <mark>" + total + "</mark>,<br/>" + "in the year <mark>" + year + "</mark>";
+        interest = parseInt(interest);
+
+        var compute_text = "If you deposit <mark>" + String(p) + "</mark><br/>" + "at an interest rate of <mark>" + rate + "%</mark><br/>";
+        compute_text += "You will receive an amount of <mark>" + String(interest) + "</mark>,<br/>" + "in the year <mark>" + year + "</mark>";
 
         document.getElementById("result").innerHTML = compute_text;
         // refocus on principal field after complete
